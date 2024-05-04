@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import styles from '../styles/styles.module.css'; 
 import { UnicornMap } from "../components/unicorn_component/unicornMap";
-import { TopCompaniesChart } from "../components/unicorn_component5/unicornBarChart";
+import { TopCompaniesChart } from "../components/unicorn_component/unicornBarChart";
 import { IndustryTree } from "../components/unicorn_component/industryTree";
 import { LineChart } from "../components/unicorn_component/lineChart";
 import {PieChart} from "../components/unicorn_component/pieChart";
