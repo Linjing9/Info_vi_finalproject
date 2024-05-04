@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import styles from '../styles/styles.module.css'; 
-import { UnicornMap } from "../components/assignment5/unicornMapLinjing";
-import { TopCompaniesChart } from "../components/assignment5/unicornBarChart1";
-import { IndustryTree } from "../components/assignment5/industryTree1";
+import { UnicornMap } from "../components/assignment5/unicornMap";
+import { TopCompaniesChart } from "../components/assignment5/unicornBarChart";
+import { IndustryTree } from "../components/assignment5/industryTree";
 import { LineChart } from "../components/assignment5/lineChart";
 import {PieChart} from "../components/assignment5/pieChart";
 
