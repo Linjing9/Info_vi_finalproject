@@ -5,7 +5,6 @@ function IndustryTree(props) {
   const { width, height } = props;
   const [treeData, setTreeData] = useState(null);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,9 +36,7 @@ function IndustryTree(props) {
     fetchData();
   }, []);
 
-
   const industryColor = d3.scaleOrdinal(d3.schemeDark2);
-
 
   const showTooltip = (event, data) => {
     const tooltip = document.createElement("div");
@@ -78,15 +75,13 @@ function IndustryTree(props) {
       .attr("fill", industryColor(data.industry));
   };
 
-
-
   return (
     <div style={{ position: 'relative' }}>
       {treeData && (
         <>
           <div style={{ marginBottom: '10px' }}>
           </div>
-          <svg width={width} height={height}>
+          <svg width={width} height={height} style={{ marginLeft: '50px' }}>
             <g>
               {d3.treemap().size([width, height]).padding(2)(
                 d3.hierarchy(treeData).sum(d => d.value).sort((a, b) => b.value - a.value)
@@ -111,7 +106,7 @@ function IndustryTree(props) {
                     <rect
                       width={leaf.x1 - leaf.x0}
                       height={leaf.y1 - leaf.y0}
-                      fill={industryColor(leaf.data.name)}
+                      fill={industryColor(leaf.data.industry)}
                       stroke="white"
                     />
                   )}
@@ -126,7 +121,7 @@ function IndustryTree(props) {
                       textAnchor="middle"
                       dominantBaseline="middle"
                     >
-                      {leaf.data.name}
+                      {leaf.data.industry}
                     </text>
                   )}
 
@@ -143,8 +138,22 @@ function IndustryTree(props) {
           </svg>
         </>
       )}
+      <div style={{ position: 'absolute', top: 0, right: 0 }}>
+        {/* Append legend boxes and text */}
+        <svg width={500} height={250}>
+          {['enterprise tech', 'financial services', 'consumer and retail', 'industrials', 'media & entertainment', 'health care & life sciences', 'insurances'].map((industry, index) => (
+            <g key={index}>
+              <rect x={140} y={20 + index * 30} width={20} height={20} fill={industryColor(industry)} />
+              <text x={170} y={32 + index * 30} alignmentBaseline="middle">{industry}</text>
+            </g>
+          ))}
+        </svg>
+      </div>
     </div>
   );
+}
+
+export { IndustryTree };
 }
 
 export { IndustryTree };
