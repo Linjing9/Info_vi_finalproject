@@ -154,6 +154,4 @@ function IndustryTree(props) {
 }
 
 export { IndustryTree };
-}
 
-export { IndustryTree };
